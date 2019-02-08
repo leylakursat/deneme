@@ -1,0 +1,189 @@
+<html>
+
+<head>
+    <title>Generics Experiment</title>
+
+    <!--JS-->
+
+    <!-- external general utilities -->
+    <script src="_shared/js/jquery-1.11.1.min.js "></script>
+    <script src="_shared/full-projects/jquery-ui/jquery-ui.min.js"></script>
+    <script src="_shared/js/underscore-min.js"></script>
+    <!-- if you want to draw stuff: -->
+    <!-- <script src="_shared/js/raphael-min.js"></script> -->
+    <script src="_shared/js/uniqueturker.js"></script>
+
+    <!-- cocolab experiment logic -->
+    <script src="_shared/js/exp-V2.js"></script>
+    <script src="_shared/js/stream-V2.js"></script>
+
+    <!-- cocolab general utilities -->
+    <script src="_shared/js/mmturkey.js "></script>
+    <script src="_shared/js/browserCheck.js"></script>
+    <script src="_shared/js/utils.js"></script>
+    <!-- if you want to draw cute creatures (depends on raphael): -->
+    <!-- <script src="_shared/js/ecosystem.js"></script> -->
+
+    <!-- experiment specific helper functions -->
+    <!-- <script src="js/local-utils.js"></script> -->
+
+    <!--CSS-->
+    <link href="_shared/full-projects/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="_shared/css/cocolab-style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/local-style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- experiment file -->
+    <script src="js/prevalence.js"></script>
+
+    <!-- stimulus file -->
+    <script src="js/stimuli.js"></script>
+</head>
+
+<body onload="init()">
+  <noscript>This task requires JavaScript.</noscript>
+
+  <div class="slide" id="i0">
+    <p id="instruct-text" align="left">You will read 30 short conversations. These are transcriptions of real conversations that real people had over the phone. The last sentence of each conversation will be marked in red. <strong>Your task is to answer a question about the red sentence to the best of your ability.</strong><br>The HIT will take approximately 10 minutes. Let's start with two examples!</p>
+    <button id="start_button" type="button">Start Experiment</button>
+</div>
+
+    <!-- EXAMPLE 1 -->
+
+<div class="slide" id="example1">
+     <h3>Example 1</h3>
+    <p><div align="left">
+	<br><b> Speaker:</b> <font color=#E7532B> a, a contractor friend helped me, uh, with some of the, uh, foundation work </font> </div></p>
+	
+	<table class = "table1" id="sentenceGenerator"> </table> 
+	<div id="intruction1" class="instruction"><i>Does the person who produced the sentence in red know whether the sentence in blue is true? Please adjust the slider.</i></div>
+  <table id="slider_table" class="slider_table">
+	<tr>
+		<td><font color=#424242>they know</font></td>
+		<td colspan="2"><div id="single_slider" class="slider"></div></td>
+		<td><font color=#424242>they don't know</font></td>
+	</tr>
+	</table>
+	<div align=center><button class=continueButton onclick=_s.button()>Continue</button></div>
+</div>
+
+    <!-- EXAMPLE 2 -->
+
+<div class="slide" id="example2">
+    <h3>Example 2</h3>
+    <p><div align="left">
+     <b> Speaker #1:</b>  Where is Peter?
+	<br><b> Speaker #2:</b> <font color=#E7532B> He's in Paris or London.</font></div></p>
+	
+	<table class = "table1" id="sentenceGenerator2"> </table> 
+	<div id="intruction2" class="instruction"><i>How similar is the statement in blue (with 'but not both') to the statement in red (without 'but not both')? Please adjust the slider.</i></div>
+	<table id="slider_table2" class="slider_table">
+	<tr>
+		<td><font color=#424242>very different meaning</font></td>
+		<td colspan="2"><div id="single_slider2" class="slider"></div></td>
+		<td><font color=#424242>same meaning</font></td>
+	</tr>
+	</table>
+	<div align=center><button class=continueButton onclick=_s.button()>Continue</button></div>
+  </div>
+
+    <!-- EXPERIMENT -->
+
+<div class="slide" id="startExp">
+    <p id="instruct-text" align="left">Great! Now we can start the real experiment. You will now read 30 conversations. 
+    You won't always need to read the whole conversation to decide whether the blue and the red sentence have the same meaning or not.
+    Sometimes, the sentence with "but not both" will sound strange. In this case, set the slider to the best of your ability, 
+    but also click the checkbox next to "The blue sentence sounds strange".
+    </p>
+    <table id="instructionGen"> </table> 
+</div>
+
+<div class="slide" id="generateEntities">
+  <p class="case" style="text-align: left;"></p>
+  <p></p>
+  	<table class="table1" id="tableGenerator"> </table>
+	<div id="intruction3" class="instruction"><i>How similar is the statement in blue (with 'but not both') to the statement in red (without 'but not both')? Please adjust the slider.</i></div>
+	<table id="slider_table3" class="slider_table">
+	<tr>
+		<td><font color=#424242>very different meaning</font></td>
+		<td colspan="2"><div id="single_slider3" class="slider"></div></td>
+		<td><font color=#424242>same meaning</font></td>
+	</tr>
+	</table>
+	<font color=#424242> The blue sentence sounds strange: <input type="checkbox" id="myCheck"></font>
+	<br>
+	<br>
+	<div align=center><button class=continueButton onclick=_s.button()>Continue</button></div>
+
+</div>
+
+
+  <div class="slide"  id="subj_info">
+    <div class="long_form">
+      <div class="subj_info_title">Additional information</div>
+      <p class="info">Answering these questions is optional, but will help us understand your answers.</p>
+      <p>Did you read the instructions and do you think you did the HIT correctly?</p>
+      <label><input type="radio"  name="assess" value="No"/>No</label>
+      <label><input type="radio"  name="assess" value="Yes"/>Yes</label>
+      <label><input type="radio"  name="assess" value="Confused"/>I was confused</label>
+
+      <p>Gender:
+        <select id="gender">
+          <label><option value=""/></label>
+          <label><option value="Male"/>Male</label>
+          <label><option value="Female"/>Female</label>
+          <label><option value="Other"/>Other</label>
+        </select>
+      </p>
+
+      <p>Age: <input type="text" id="age"/></p>
+
+      <p>Level Of Education:
+        <select id="education">
+          <label><option value="-1"/></label>
+          <label><option value="0"/>Some High School</label>
+          <label><option value="1"/>Graduated High School</label>
+          <label><option value="2"/>Some College</label>
+          <label><option value="3"/>Graduated College</label>
+          <label><option value="4"/>Hold a higher degree</label>
+        </select>
+      </p>
+
+      <p>Native Language: <input type="text" id="language"/></p>
+      <label>(the language(s) spoken at home when you were a child)</label>
+      
+      <p>Do you think the payment was fair?</p>
+      <select id="fairprice">
+        <label><option value="-1"></option></label>
+        <label><option value="0">The payment was too little</option></label>
+        <label><option value="1" >The payment was fair</option></label>
+      </select>
+      
+      <p>Did you enjoy the hit?</p>
+      <select id="enjoyment">
+        <label><option value="-1"></option></label>
+        <label><option value="0">Worse than the Average HIT</option></label>
+        <label><option value="1" >An Average HIT</option></label>
+        <label><option value="2">Better than average HIT</option></label>
+      </select>
+    
+      <p>We would be interested in any comments you have about this experiment. Please type them here:</p>
+      <textarea id="comments" rows="3" cols="50"></textarea>
+      <br/>
+      <button onclick="_s.submit()">Submit</button>
+    </div>
+  </div>
+
+  <div id="thanks" class="slide js" >
+    <p  class="big">Thanks for your Time!</p>
+  </div>
+
+  <div class="progress">
+    <span>Progress:</span>
+    <div class="bar-wrapper">
+      <div class="bar" width="0%">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
