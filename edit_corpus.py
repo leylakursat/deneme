@@ -1,13 +1,15 @@
-f = open('korpus3_35.txt','r')
+f = open('corpus1.txt')
 
 message = f.read()
 
-print(message)
+cases = message.split('\n')
+
+print(cases)
 
 f.close()
 
 
-# THIGNS TO TO:
 
-# 1) Format 
-# 2) Delete some cases
+
+
+###SpeakerA(\d+).(\d+)?t(\d+)(.\d+)?/g
