@@ -1,0 +1,5 @@
+53:48	sw2005_s34_18	time	0	new
+362:44	sw2005_s199_15	priorities	1	old
+456:25	sw2008_s38_10	variety	0	new
+905:41	sw2012_s30_15	sense	1	old
+1638:23	sw2018_s196_8	discrimination	0	new
