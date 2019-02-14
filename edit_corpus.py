@@ -1,7 +1,7 @@
 f = open('saved_contexts_for_all.txt')
 #f = open('corpus1.txt')
 
-file = open('saved_new_corpus.txt', 'a')
+file = open('new_corpus.txt', 'a')
 
 message = f.read()
 
@@ -24,8 +24,8 @@ def replacenth(source, old, new, n):
 
 count = 0
 
-#real range 0,579
-for x in range(0, 578):
+#real range 0,577
+for x in range(0, 577):
 	targetsentence = cases[x].split('###')
 	# targetsentence[0] contains the TGrepID and the target sentence in cases[x]
 	cleantarget = targetsentence[0].split('\t')
