@@ -11,7 +11,9 @@
 	input: saved_contexts_for_all.txt, some_heads.txt
 	output: new_corpus.txt
 
-Test Files: test_corpus1.txt, test_format.txt, test_head1.txt
 
+saved_all_contexts --> contexts for new corpus (582 items)  
+saved_new_corpus --> NEW CORPUS with 582 items that work with "all"  
+first_thirty --> pilot corpus
 
 
