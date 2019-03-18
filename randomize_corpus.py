@@ -17,4 +17,3 @@ f.close()
 
 
 TGrepID	EntireSentence	context	BestResponse
-#file.write(str(cases[x] + "\n")
